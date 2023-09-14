@@ -3,29 +3,30 @@
 #include<ctime>
 using namespace std;
 
-void check1(int target){
+void guessNumberGame(int target){
     int n;
-    cout << "Guess a number:"<<endl;
-    cin>>n;
+    cout << "Guess a number between 1 and 100:"<<endl;
+    int attempts=0;
     do{
+        cin>>n;
+        attempts++;
         if(n > target){
             cout<<"Your  guess is too high! Guess again: "<<endl;
-            cin>>n;
         }
         else if(n < target){
             cout<<"Your guess is too low! Guess again: "<<endl;
-            cin>>n;
         }
         if(n== target){
-            cout<<"congrats your guess was correct"<<endl;
+            cout<<"Congrats! your guess was correct"<<endl;
+            cout<<"Total attemps taken to Guess: "<<attempts<<endl;
         }
     }
     while(n != target );
 }
-
 int main(){
+    //seed the random generator with current time
     srand(time(NULL));
     int target = rand()%100;
-    check1(target);
+    guessNumberGame(target);
     return 0;
 }
